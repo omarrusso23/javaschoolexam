@@ -12,10 +12,6 @@ The exam includes 3 tasks to be done: [Calculator](/tasks/Calculator.md), [Pyram
 ### Result ###
 
 * Author name : {PUT YOUR NAME HERE}
-* Codeship : {PUT YOUR CODESHIP BAGDE HERE}
-
-Example of Codeship badge. Please remove the example before you send us the link. 
-[ ![Codeship Status for tschool/javaschoolexam](https://app.codeship.com/projects/a9af8940-d130-0134-89a6-5e8aaaa2a5a2/status?branch=master)](https://app.codeship.com/projects/201451)
 
 
 ### How to start?  ###
@@ -27,9 +23,9 @@ Example of Codeship badge. Please remove the example before you send us the link
 
 * Make sure your code can be built and all tests are green (example command: "mvn clean install")
 * Commit and push all changes to your repository
-* Configure the build on CI server like Codeship
-* Add build badge and your name to the README.md under Result section
-* Check that the badge shows green build. We will not accept your solution if there is any red badge on the page.
+* Configure the [Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/) to deploy your maven project 
+* Add your name to the README.md under Result section
+* Check that the latest pipeline shows green build. We will not accept your solution if it is red. Also check that all 33 tests are passed in the pipeline.
 * Send us an email with the link to your repository. Be aware that the build must be green all the time after you send us the link
 
 ### Test fails but I'm sure my solution is correct. What to do?  ###
@@ -41,12 +37,6 @@ Example of Codeship badge. Please remove the example before you send us the link
     * Explain why do you think your version is correct
 * Wait for the response
 
-### Tips and tricks for Codeship CI  ###
-* Codeship uses Java 7 by default. Please refer to [this article](https://documentation.codeship.com/basic/languages-frameworks/java-and-jvm-based-languages/) to set up Java 8
-* jdk_switcher is to be used in "Setup Commands" of project configuration
-* Test command is "mvn -B test"
-* Markdown code to add badge to your README is located in Project Settings -> Notification -> Status images 
-
 ### Who do I talk to? ###
 
 * In case of any questions contact the person who sent you the task (first) or [HR department](mailto:job@t-systems.ru) of T-Systems RU (second).
@@ -54,4 +44,3 @@ Example of Codeship badge. Please remove the example before you send us the link
 ### Useful links ###
 
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-* [Codeship](https://codeship.com)

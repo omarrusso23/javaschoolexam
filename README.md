@@ -39,7 +39,7 @@ The exam includes 3 tasks to be done: [Calculator](/tasks/Calculator.md), [Pyram
 
 ### Who do I talk to? ###
 
-* In case of any questions contact the person who sent you the task (first) or [HR department](mailto:job@t-systems.ru) of T-Systems RU (second).
+* In case of any questions contact the person who sent you the task (first) or HR department of T-Systems (second).
 
 ### Useful links ###
 

@@ -83,6 +83,7 @@ public class PyramidBuilderTest {
     public void buildPyramid5() {
         // given
         List<Integer> input = Arrays.asList(11, 1, 21, 12, 3, 16, 2, 13, 9, 4, 17, 5, 14, 10, 18, 8, 7, 19, 15, 6, 20);
+        System.out.println("HI"+input.size());
         int[][] expected = new int[][]{
                 {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 0},

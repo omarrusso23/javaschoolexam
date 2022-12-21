@@ -7,6 +7,7 @@ public class CalculatorTest {
 
     private Calculator calc = new Calculator();
 
+
     @Test
     public void evaluate() {
         //given

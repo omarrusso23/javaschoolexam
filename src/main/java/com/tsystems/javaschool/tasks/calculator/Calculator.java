@@ -55,28 +55,36 @@ public class Calculator {
                 i--;
                 values.push(Double.parseDouble(numberBuilder.toString()));
             } else if (c == '(') {
-                if (lastChar == ')') {
-                // Consecutive closing and opening parentheses
+                if (lastChar == ')' || lastChar == '+' || lastChar == '-' || lastChar == '*' || lastChar == '/') {
+                    // Consecutive closing and opening parentheses or consecutive operators
                     return null;
                 }
                 openParentheses++;
                 operations.push(c);
                 lastChar = c;
             } else if (c == ')') {
-                if (lastChar == '(') {
-                // Consecutive opening and closing parentheses
+                if (lastChar == '(' || lastChar == '+' || lastChar == '-' || lastChar == '*' || lastChar == '/') {
+                    // Consecutive opening and closing parentheses or consecutive operators
+                    return null;
+                }
+                if (openParentheses == 0) {
+                    // Closing parentheses without matching opening parentheses
                     return null;
                 }
                 openParentheses--;
                 // Perform the operations in the parentheses
-                while (operations.peek() != '(') {
+                while (!operations.empty() && operations.peek() != '(') {
                     values.push(performOperation(operations.pop(), values.pop(), values.pop()));
+                }
+                if (operations.empty()) {
+                    // Closing parentheses without matching opening parentheses
+                    return null;
                 }
                 operations.pop();
                 lastChar = c;
             } else if (isOperator(c)) {
                 if (lastChar == '+' || lastChar == '-' || lastChar == '*' || lastChar == '/') {
-                // Consecutive operators
+                    // Consecutive operators
                     return null;
                 }
                 // Perform the pending operations until the current operator has lower precedence than the top of the stack
@@ -105,14 +113,11 @@ public class Calculator {
             values.push(result);
         }
 
-
-
         // The result is the top of the values stack
         double result = values.pop();
         if (Double.isNaN(result)) {
             return null;
         }
-
 
         else if (result == (int) result) {
             // The result is an integer
@@ -130,10 +135,6 @@ public class Calculator {
 
     /**
      * Returns true if the operator has lower precedence than the top of the stack.
-     *
-     * @param op1 the operator
-     * @param op2 the operator at the top of the stack
-     * @return true if op1 has lower precedence than op2, false otherwise
      */
     private boolean hasPrecedence(char op1, char op2) {
         if (op2 == '(' || op2 == ')') {
@@ -144,31 +145,25 @@ public class Calculator {
         }
         return true;
     }
-
     /**
      * Performs the operation specified by the operator.
-     *
-     * @param op the operator
-     * @param b  the second operand
-     * @param a  the first operand
-     * @return the result of the operation
      */
-    private double performOperation(char op, double b, double a) {
-        switch (op) {
+    private double performOperation(char operation, double secondOperand, double firstOperand) {
+        switch (operation) {
             case '+':
-                return a + b;
+                return firstOperand + secondOperand;
             case '-':
-                return a - b;
+                return firstOperand - secondOperand;
             case '*':
-                return a * b;
+                return firstOperand * secondOperand;
             case '/':
-                if (b == 0) {
-                    // Division by zero
+                if (secondOperand == 0) {
                     return Double.NaN;
                 }
-                return a / b;
+                return firstOperand / secondOperand;
+            default:
+                return Double.NaN;
         }
-        return 0;
     }
 
     /**
